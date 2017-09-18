@@ -1,0 +1,98 @@
+<div class="col-md-12">
+
+    <div class="page-title">
+        <div class="col-xs-6">
+            <h2><span class="fa fa-bell"></span><span class="xn-text"></span>  <u>Instrumentos</u></h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <?php if (Integrante::getLogged()->tipo == Integrante::TIPO_ADMINISTRADOR): ?>
+                <a class="btn btn-success btn-lg" href="<?php echo $this->baseUrl(); ?>/administrador/instrumento/novo"><span class="glyphicon glyphicon-plus"></span>Novo</a>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <?php if ($this->mensagem_sucess != ""): ?>
+        <div class="alert alert-success" role="alert"><strong><?php echo $this->mensagem_sucess; ?></strong></div>
+    <?php endif; ?>
+    <?php if ($this->mensagem_warning != ""): ?>
+        <div class="alert alert-warning" role="alert"><strong><?php echo $this->mensagem_warning; ?></strong></div>
+    <?php endif; ?>
+    <?php if ($this->mensagem_danger != ""): ?>
+        <div class="alert alert-danger" role="alert"><strong><?php echo $this->mensagem_danger; ?></strong></div>
+    <?php endif; ?>
+
+
+
+
+
+    <form class="form-group" action="<?php echo $this->baseUrl() ?>/administrador/instrumento" method="GET">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>Nome da Música</label>
+                            <input name="nome" type="text" class="form-control"  placeholder="Nome do Instrumento" value="<?php echo $this->params['nome'] ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="form-group" style="text-align: right">
+                        <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-filter" ></span>Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading ui-draggable-handle">
+            <h3>Lista de Músicas</h3>
+        </div>
+        <table class="table table-hover ">
+            <thead class="tabela-header">
+                <tr>
+                    <th>Instrumento</th>
+                    <th>Vinculado à</th>
+                    <th>Situação</th>
+                    <th>Status</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->lista_instrumentos as $instrumento): ?>
+                    <tr>
+                        <td><strong><?php echo $instrumento->nome ?></strong></td>
+                        <td>
+                            <?php if ($instrumento->IntegranteInstrumento->count() > 0): ?>
+                                <div class="dropdown">
+                                    <a class="glyphicon glyphicon-user" style="cursor: pointer" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <?php foreach ($instrumento->IntegranteInstrumento as $integrante_instrumento): ?>
+                                            <li><?php echo $integrante_instrumento->Integrante->nome ?></li>
+                                            <li role="separator" class="divider"></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div> 
+                            <?php endif; ?>
+                        </td>
+                        <td><strong><?php echo $instrumento->getSituacao() ?></strong></td>
+                        <td><strong><?php echo $instrumento->getStatus() ?></strong></td>
+                        <?php if (Integrante::getLogged()->tipo == Integrante::TIPO_ADMINISTRADOR): ?>
+                            <td><a class="glyphicon glyphicon-pencil" href="<?php echo $this->baseUrl() ?>/administrador/instrumento/editar?id=<?php echo $instrumento->id ?>"></a></td>
+                        <?php endif; ?>
+                        <?php if (Integrante::getLogged()->tipo == Integrante::TIPO_ADMINISTRADOR): ?>
+                            <td><a onclick="return confirm('Confirma a exclusão deste Instrumento')" class="glyphicon glyphicon-trash" href="<?php echo $this->baseUrl() ?>/administrador/instrumento/deletar?id=<?php echo $instrumento->id ?>"></a></td>
+                            <?php endif; ?>
+                    </tr>
+                </tbody>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
+    <?php if (isset($this->lista_instrumentos)) echo $this->paginationControl($this->lista_instrumentos, "All", "paginator.phtml", $this->list_params); ?>
+
+</div>

@@ -1,0 +1,59 @@
+<form action="" method="post">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label>Nome do instrumento</label>
+                        <input name="nome" type="text" class="form-control"  placeholder="Nome do instrumento" value="<?php echo $this->instrumento->nome ?>">
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Selecione a situação</label>
+                        <select name="situacao" class="form-control select">
+                            <option value="<?php echo Instrumento::SITUACAO_OTIMO ?>" <?php echo Instrumento::SITUACAO_OTIMO == $this->instrumento->situacao ? 'selected' : '' ?>>Otimo</option>
+                            <option value="<?php echo Instrumento::SITUACAO_BOM ?>" <?php echo Instrumento::SITUACAO_BOM == $this->instrumento->situacao ? 'selected' : '' ?>>Bom</option>
+                            <option value="<?php echo Instrumento::SITUACAO_REGULAR ?>" <?php echo Instrumento::SITUACAO_REGULAR == $this->instrumento->situacao ? 'selected' : '' ?>>Regular</option>
+                            <option value="<?php echo Instrumento::SITUACAO_RUIM ?>" <?php echo Instrumento::SITUACAO_RUIM == $this->instrumento->situacao ? 'selected' : '' ?>>Ruim</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <label>Vinculado à: </label>
+                    <div class="form-group">
+                        <?php foreach ($this->lista_integrantes as $integrante): ?>
+                            <div class="col-xs-6">
+                                <label class="checkbox-inline">
+                                    <input name="vinculo[]" type="checkbox" id="inlineCheckbox1" value="<?php echo $integrante->id ?>" <?php echo $this->instrumento->integranteSelecionado($integrante->id) ? 'checked' : '' ?> > <strong><?php echo $integrante->nome ?></strong>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label>Selecione o status</label>
+                        <select name="status" class="form-control select">
+                            <option value="<?php echo Instrumento::STATUS_ATIVO ?>" <?php echo Instrumento::STATUS_ATIVO == $this->instrumento->status ? 'selected' : '' ?>>Ativo</option>
+                            <option value="<?php echo Instrumento::STATUS_INATIVO ?>" <?php echo Instrumento::STATUS_INATIVO == $this->instrumento->status ? 'selected' : '' ?> >Inativo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row text-right">
+                <div class="col-xs-12 ">
+                    <div class="form-group" >
+                        <a class="btn btn-default btn-lg" href="<?php echo $this->baseUrl() ?>/administrador/instrumento">Cancelar</a>
+                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>

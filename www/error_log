@@ -1,0 +1,10 @@
+ 
+[18-Aug-2017 19:56:47 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[18-Aug-2017 19:57:12 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[18-Aug-2017 20:02:39 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:25 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:29 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:31 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:34 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:42 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 91
+[28-Aug-2017 08:50:42 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in /home2/crisfitn/public_html/songcontroller/application/repository/RepositoryFilter.php on line 97

@@ -1,0 +1,13 @@
+<div class="col-md-12">
+
+    
+        <div class="page-title">
+            <h2>Editar Instrumentos</h2>
+        </div>
+
+        <?php if ($this->mensagem_erro != ""): ?>
+            <div class="alert alert-danger" role="alert"><?php echo $this->mensagem_erro ?></div>
+        <?php endif; ?>
+    
+    <?php include 'form.phtml';?>
+</div>

@@ -1,0 +1,36 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+
+        <div class="page-title">
+            <?php if ($this->mensagem_perfil != ""): ?>
+                <div class="alert alert-success" role="alert"><?php echo $this->mensagem_perfil; ?></div>
+            <?php endif; ?>
+        </div>
+
+    </div>
+    <!-- <div class="row">
+         <div class="topo">
+             <div class="col-xs-6">
+                 <h2><u>Quadro de avisos</u></h2>
+             </div>
+             <div class="col-xs-6 text-right">
+                 <a class="btn btn-success" href="quadro-avisos.html"><span class="glyphicon glyphicon-plus"></span>Novo</a>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-xs-12">
+             <p>Amanhã dia 30/04/1997 não haverá ensaio</p>
+             <p>Amanhã dia 30/04/1997 não haverá ensaio</p>
+             <p>Amanhã dia 30/04/1997 não haverá ensaio</p>
+             <p>Amanhã dia 30/04/1997 não haverá ensaio</p>
+         </div>
+     </div>-->
+    <h2>Seja bem-vindo, <strong><?php echo $_SESSION['integrante_nome']; ?></strong></h2>
+
+    <?php if ($this->mensagem_restrito != ""): ?>
+        <div class="alert alert-danger" role="alert"><?php echo $this->mensagem_restrito; ?></div>
+    <?php endif; ?>
+
+
+</div>

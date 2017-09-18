@@ -1,0 +1,86 @@
+<div class="col-md-12">
+
+    <div class="panel panel-default">
+        <div class="page-title">
+            <h2><u> Editar Integrantes</u></h2>
+        </div>
+
+        <?php if ($this->mensagem_erro != ""): ?>
+            <div class="alert alert-warning" role="alert"><strong><?php echo $this->mensagem_erro; ?></strong></div>
+        <?php endif; ?>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="row">
+            <form action="<?php $this->baseUrl() ?>/administrador/integrante/perfil?id=<?php echo $this->integrante->id ?>" method="post" enctype="multipart/form-data" style="margin: 20px 35px 0 0">
+                <div class="col-xs-3">
+                    <div class="form-group">
+
+                        <div class="btn btn-toolbar btn-file ">
+                            <span>
+                                <?php if ($this->integrante->foto != "") { ?>
+                                    <img width="140" height="140" src="<?php echo $this->baseUrl() ?>/uploads/fotointegrante/<?php echo $this->integrante->foto ?>" alt="Foto" class="img-circle" >
+                                <?php } else { ?>
+                                    <img width="140" height="140" src="<?php echo $this->baseUrl() ?>/uploads/fotointegrante/default-user.jpg" alt="Foto" class="img-circle" >
+                                <?php } ?>
+                                <input  name="foto" type="file" multiple="" class="file" data-preview-file-type="any" id="1465570570208" >                                 
+                            </span>
+                        </div>
+                    </div>
+                    <label for="1465570570208" title="Clique para editar foto de perfil" style="margin-left: 33px; cursor: pointer" class="btn  btn-primary"><strong>Editar Foto</strong></label>
+                </div>
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        <label>Nome do integrante</label>
+                        <input name="nome" type="text" class="form-control"  placeholder="integrante" value="<?php echo $this->integrante->nome ?>">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Usuário</label>
+                        <input name="usuario" type="text" class="form-control"  placeholder="usuário" value="<?php echo $this->integrante->usuario ?>">
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" type="text" class="form-control"  placeholder="email" value="<?php echo $this->integrante->email ?>">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Selecione a categoria</label>
+                        <select name="categoria" class="form-control">
+                            <option value="<?php echo Integrante::CATEGORIA_CANTOR ?>" <?php echo Integrante::CATEGORIA_CANTOR == $this->integrante->categoria ? 'selected' : '' ?> >Cantor</option>
+                            <option value="<?php echo Integrante::CATEGORIA_MUSICO ?>" <?php echo Integrante::CATEGORIA_MUSICO == $this->integrante->categoria ? 'selected' : '' ?>>Músico</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input name="senha" class="form-control" id="disabledInput" type="password" value="<?php echo $this->integrante->senha ?>" >
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Selecione o status</label>
+                        <select name="status" class="form-control">
+                            <option value="<?php echo Integrante::STATUS_ATIVO ?>">Ativo</option>
+                            <option value="<?php echo Integrante::STATUS_INATIVO ?>">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row text-right">
+                    <div class="col-xs-12 ">
+                        <div class="form-group" style="margin: 20px 25px">
+                            <a class="btn btn-default btn-lg" href="<?php echo $this->baseUrl() ?>/administrador/integrante">Cancelar</a>
+                            <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

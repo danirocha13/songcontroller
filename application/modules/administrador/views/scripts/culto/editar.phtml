@@ -1,0 +1,12 @@
+<div class="col-md-12">
+
+    
+        <div class="page-title">
+            <h2>Editar Culto</h2>
+        </div>
+        <?php if ($this->mensagem_erro != ""): ?>
+            <div class="alert alert-warning" role="alert"><strong><?php echo $this->mensagem_erro; ?></strong></div>
+        <?php endif; ?>
+  
+    <?php include 'form.phtml';?>
+</div>

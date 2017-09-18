@@ -1,0 +1,51 @@
+<div class="col-md-12">
+    <div class="page-title">
+        <?php if ($this->mensagem_erro != ""): ?>
+            <div class="alert alert-warning" role="alert"><strong><?php echo $this->mensagem_erro; ?></strong></div>
+        <?php endif; ?>
+        <div class="page-title">
+            <h2>Editar Grupo</h2>
+        </div>
+    </div>
+    
+
+    <form  role="form" class = "form-group" action = "<?php $this->baseUrl() ?>/administrador/grupo/editar?id=<?php echo $this->grupo->id ?>" method = "post" enctype="multipart/form-data">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class = "row">
+                    <div class="col-md-6">
+                        <div class = "form-group">
+                            <label>Nome do grupo</label>
+                            <input name="grupo" type = "text" class = "form-control" style="text-transform: capitalize" value="<?php echo $this->grupo->nome ?>">
+                        </div>
+                        <div class = "form-group">
+                            <label>Nome do Responsável</label>
+                            <input name = "responsavel" type = "text" class = "form-control" placeholder = "Responsável" value="<?php echo $this->grupo->responsavel ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class = "form-group">
+                            <label>Nome da Igreja</label>
+                            <input name = "igreja" type = "text" class = "form-control" style="text-transform: capitalize" placeholder = "Igreja" value="<?php echo $this->grupo->igreja ?>">
+                        </div>
+                        <div class = "form-group">
+                            <label for = "exampleInputFile">Escolha foto do Grupo</label>
+                            <input name="imagem" type = "file" id = "exampleInputFile">
+                            <img style="border: 5px solid;margin-top: 5px" width="200" height="140" id="imagem" src="<?php echo $this->baseUrl() ?>/uploads/imagemgrupo/<?php echo $this->grupo->imagem_grupo ?>" alt="imagem" class="img-rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class = "row ">
+                    <div class="form-group" style="text-align: right">
+                        <a class="btn btn-default btn-lg" href="<?php echo $this->baseUrl() ?>/administrador/grupo">Cancelar</a>
+                        <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

@@ -1,0 +1,104 @@
+<div class="col-md-12">
+
+    <div class="panel panel-default">
+        <div class="page-title">
+            <h2>Culto <?php echo date('d/m/Y', strtotime($this->culto->data)).' | ' ?> </h2>
+            <?php if ($this->culto->nome != ""): ?>
+            <h3 style="margin-top: 7px"><strong><?php echo $this->culto->nome ?> - <?php echo substr($this->culto->hora, 0, 5) ?> Hrs</strong></h3>
+            <?php endif ?>        
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="row">
+            <table class="table table-bordered">
+                <div class="col-md-6">
+                    <h3><strong>Escala do culto</strong></h3>
+                </div>
+                <thead>
+                    <tr>
+                        <th style="text-align: center">Instrumento</th>
+                        <th style="text-align: center">Integrante</th>
+                    </tr>
+                </thead>
+                <tbody class="tabela">
+                    <tr>
+                        <td> 
+                            <?php foreach ($this->culto->Escala as $escala): ?>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <strong><p style="text-align: center"><?php echo $escala->Instrumento->nome ?></p></strong>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </td>
+                        <td>
+                            <?php foreach ($this->culto->Escala as $escala): ?>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <strong><p style="text-align: center"><?php echo $escala->Integrante->nome ?></p></strong>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-striped">
+                <div class="col-md-6">
+                    <h3><strong>Repertório de músicas</strong></h3>
+                </div>
+                <thead>
+                    <tr>
+
+                        <th style="text-align: center">Músicas</th>
+                        <th style="text-align: center">Arquivos</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela">
+                    <?php foreach ($this->culto->Repertorio as $repertorio): ?>
+                        <tr id="linha">
+                            <td style="text-align: center"> 
+                                <strong><?php echo $repertorio->Musica->nome ?></strong>
+                            </td>
+                            <td style="text-align: center">
+                                <div class="dropdown">
+                                    <a class="glyphicon glyphicon-folder-open" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <?php if ($repetorio->Musica->letra != ""): ?>
+                                            <li><a href="<?php echo $this->baseUrl() ?>/uploads/letra/<?php echo $musica->letra ?>" target="_blank">Arquivo Letra</a></li>
+                                        <?php endif; ?>
+                                        <?php if ($repertorio->Musica->cifra != ""): ?>
+                                            <li><a href="<?php echo $this->baseUrl() ?>/uploads/cifra/<?php echo $musica->cifra ?>" target="_blank">Arquivo Cifra</a></li>
+                                        <?php endif; ?>
+                                        <?php if ($repertorio->Musica->link != ""): ?>
+                                            <li><a href="<?php echo $musica->link ?>" target="_blank">Link Musica</a></li>
+                                        <?php endif; ?>
+                                        <li role="separator" class="divider"></li>
+                                        <?php if ($repertorio->Musica->power_point != ""): ?>
+                                            <li><a href="<?php echo $this->baseUrl() ?>/uploads/powerpoints/<?php echo $musica->power_point ?>" download >Baixar e Editar Power Point</a></li>
+                                        <?php endif; ?>
+                                        <?php if ($repertorio->Musica->cifra != ""): ?>
+                                            <li><a href="<?php echo $this->baseUrl() ?>/uploads/cifra/<?php echo $musica->cifra ?>" download >Baixar e Editar Cifra</a></li>
+                                        <?php endif; ?>
+                                        <?php if ($repertorio->Musica->arquivo_mp3 != ""): ?>
+                                            <li><a href="<?php echo $this->baseUrl() ?>/uploads/mp3/<?php echo $musica->arquivo_mp3 ?>" download >Baixar Música</a></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <div class="row text-right">
+                <div class="col-xs-12 ">
+                    <div class="form-group" style="margin: 20px 25px">
+                        <a class="btn btn-primary btn-lg" href="<?php echo $this->baseUrl() ?>/administrador/culto">Voltar</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
